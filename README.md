@@ -56,7 +56,3 @@ docs/superpowers/ design spec and implementation plan
 - Dataset is India-centric and self-reported.
 - Labels are not clinically validated — results predict the recorded label, not depression itself.
 - Feature importance is associational, not causal.
-
-## License
-
-For portfolio / educational use.
