@@ -9,6 +9,9 @@ venv/
 # Data / processed outputs
 data/processed/
 
+# Local working docs (kept out of the published repo)
+docs/superpowers/
+
 # OS / editor
 .DS_Store
 .idea/
