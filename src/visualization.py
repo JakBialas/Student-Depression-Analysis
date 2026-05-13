@@ -5,7 +5,7 @@ import seaborn as sns
 import pandas as pd
 
 sns.set_theme(style="whitegrid", context="notebook")
-PALETTE = {0: "#4C72B0", 1: "#C44E52"}  # not-depressed / depressed
+PALETTE = {"0": "#4C72B0", "1": "#C44E52"}  # not-depressed / depressed
 
 
 def plot_numeric_distribution(df: pd.DataFrame, column: str, ax=None):
