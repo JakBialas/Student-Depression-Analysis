@@ -6,6 +6,6 @@ DATA_PATH = Path(__file__).resolve().parents[1] / "data" / "raw" / "student_depr
 
 
 def load_raw(path: Path | str = DATA_PATH) -> pd.DataFrame:
-    df = pd.read_csv(path)
+    df = pd.read_csv(path, na_values=["?"])
     df.columns = [c.strip() for c in df.columns]
     return df
