@@ -39,3 +39,46 @@ def group_rare_categories(series: pd.Series, min_count: int = 50, other_label: s
     counts = series.value_counts()
     keep = counts[counts >= min_count].index
     return series.where(series.isin(keep), other_label)
+
+
+def prepare_features(df: pd.DataFrame, rare_city_min: int = 50) -> tuple[pd.DataFrame, pd.Series]:
+    """Apply manual ordinal/binary encodings and return (X, y)."""
+    data = df.copy()
+    if "id" in data.columns:
+        data = data.drop(columns=["id"])
+
+    data["Sleep Duration"] = encode_sleep_duration(data["Sleep Duration"])
+    data["Dietary Habits"] = encode_dietary_habits(data["Dietary Habits"])
+    data["Have you ever had suicidal thoughts ?"] = encode_yes_no(data["Have you ever had suicidal thoughts ?"])
+    data["Family History of Mental Illness"] = encode_yes_no(data["Family History of Mental Illness"])
+    data["Gender"] = encode_gender(data["Gender"])
+
+    data["City"] = group_rare_categories(data["City"], min_count=rare_city_min)
+
+    y = data["Depression"].astype(int)
+    X = data.drop(columns=["Depression"])
+    return X, y
+
+
+NUMERIC_FEATURES = [
+    "Gender", "Age", "Academic Pressure", "Work Pressure", "CGPA",
+    "Study Satisfaction", "Job Satisfaction", "Sleep Duration",
+    "Dietary Habits", "Have you ever had suicidal thoughts ?",
+    "Work/Study Hours", "Financial Stress", "Family History of Mental Illness",
+]
+CATEGORICAL_FEATURES = ["City", "Profession", "Degree"]
+
+
+def build_preprocessor() -> ColumnTransformer:
+    numeric_pipe = Pipeline([
+        ("imputer", SimpleImputer(strategy="median")),
+        ("scaler", StandardScaler()),
+    ])
+    categorical_pipe = Pipeline([
+        ("imputer", SimpleImputer(strategy="most_frequent")),
+        ("onehot", OneHotEncoder(handle_unknown="ignore", drop="first", sparse_output=False)),
+    ])
+    return ColumnTransformer([
+        ("num", numeric_pipe, NUMERIC_FEATURES),
+        ("cat", categorical_pipe, CATEGORICAL_FEATURES),
+    ])
