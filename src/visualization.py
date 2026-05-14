@@ -10,7 +10,7 @@ def _wrap(text: str, width: int = 30) -> str:
     return textwrap.fill(text, width=width)
 
 sns.set_theme(style="whitegrid", context="notebook")
-PALETTE = {"0": "#4C72B0", "1": "#C44E52"}  # not-depressed / depressed
+PALETTE = {0: "#4C72B0", 1: "#C44E52"}  # not-depressed / depressed
 
 
 def plot_numeric_distribution(df: pd.DataFrame, column: str, ax=None):
@@ -33,7 +33,7 @@ def plot_categorical_counts(df: pd.DataFrame, column: str, top_n: int | None = N
 
 def plot_numeric_vs_target(df: pd.DataFrame, column: str, target: str = "Depression", ax=None):
     ax = ax or plt.gca()
-    sns.boxplot(data=df, x=target, y=column, ax=ax, palette=PALETTE)
+    sns.boxplot(data=df, x=target, y=column, hue=target, ax=ax, palette=PALETTE, legend=False)
     ax.set_title(_wrap(f"{column} by {target}"))
     return ax
 
