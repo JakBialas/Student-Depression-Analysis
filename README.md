@@ -2,7 +2,7 @@
 
 End-to-end data science project on a Kaggle-style dataset of ~27 900 students,
 predicting `Depression` (binary) from demographic, academic, and lifestyle features.
-The project covers EDA, preprocessing, modeling, evaluation, and interpretation —
+The project covers EDA, preprocessing, modeling, evaluation, and interpretation -
 organized as three Jupyter notebooks driven by reusable `src/` modules.
 
 ## Results
