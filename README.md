@@ -17,7 +17,7 @@ organized as three Jupyter notebooks driven by reusable `src/` modules.
 | KNN | 0.902 | 0.863 | 0.834 |
 | Decision Tree | 0.761 | 0.801 | 0.767 |
 
-Best model: **`XGBoost (tuned)`** — ROC-AUC ≈ `0.920`.
+Best model: **`XGBoost (tuned)`** - ROC-AUC ≈ `0.920`.
 
 Top predictors of depression (consistent across Random Forest and XGBoost):
 1. History of suicidal thoughts
@@ -37,14 +37,14 @@ Top predictors of depression (consistent across Random Forest and XGBoost):
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-jupyter notebook  # then run notebooks in order: 01 → 02 → 03
+jupyter notebook  # then run notebooks in order: 01 -> 02 -> 03
 ```
 
 ## Project structure
 
 ```
 data/             raw + processed splits
-notebooks/        01_eda → 02_preprocessing → 03_modeling
+notebooks/        01_eda -> 02_preprocessing -> 03_modeling
 src/              data_loader, preprocessing, visualization, models, evaluation
 tests/            pytest smoke tests for preprocessing
 reports/figures/  PNG exports used in this README
