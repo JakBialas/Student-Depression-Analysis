@@ -32,6 +32,13 @@ Top predictors of depression (consistent across Random Forest and XGBoost):
 ![ROC curves](reports/figures/03_roc_curves.png)
 ![Feature importance](reports/figures/03_feature_importance.png)
 
+## Data
+
+The raw dataset is **not included** in this repo (to keep it lightweight and avoid
+redistributing third-party data). It is a public *Student Depression Dataset* from
+Kaggle — download it and place the CSV at `data/raw/student_depression_dataset.csv`
+before running the notebooks.
+
 ## How to run
 
 ```bash
@@ -48,7 +55,6 @@ notebooks/        01_eda -> 02_preprocessing -> 03_modeling
 src/              data_loader, preprocessing, visualization, models, evaluation
 tests/            pytest smoke tests for preprocessing
 reports/figures/  PNG exports used in this README
-docs/superpowers/ design spec and implementation plan
 ```
 
 ## Limitations

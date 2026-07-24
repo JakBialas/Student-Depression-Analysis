@@ -6,7 +6,8 @@ __pycache__/
 venv/
 .ipynb_checkpoints/
 
-# Data / processed outputs
+# Data (raw dataset not redistributed — see README) + processed outputs
+data/raw/
 data/processed/
 
 # OS / editor
